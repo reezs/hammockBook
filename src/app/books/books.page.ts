@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DbService } from '../services/db.service';
+import { DBService } from '../services/db.service';
 import { Book } from '../entities/book';
 
 @Component({
@@ -10,7 +10,7 @@ import { Book } from '../entities/book';
 })
 export class BooksPage implements OnInit {
   books: Book[];
-  constructor(private router: Router, private dbService: DbService) {
+  constructor(private router: Router, private dbService: DBService) {
     this.listarBooks();
   }
   registrarBooks() {
@@ -29,24 +29,24 @@ export class BooksPage implements OnInit {
     this.listarBooks();
   }
 
-  // edit(book) {
-  //   book.isEditing = true;
-  // }
+  edit(book) {
+    book.isEditing = true;
+  }
 
-  // cancelEdit(book) {
-  //   book.isEditing = false;
-  // }
+  cancelEdit(book) {
+    book.isEditing = false;
+  }
 
-  // confirmEdit(book) {
-  //   this.dbService.update('books', book.uid, {
-  //     title: book.title,
-  //     description: book.description,
-  //     author: book.author,
-  //     genre: book.genre,
-  //     releaseYear: book.releaseYear;
-  //   });
-  //   book.isEditing = false;
-  //   }
+  confirmEdit(book) {
+    this.dbService.update('books', book.uid, {
+      title: book.title,
+      description: book.description,
+      author: book.author,
+      genre: book.genre,
+      releaseYear: book.releaseYear
+    });
+    book.isEditing = false;
+    }
     ngOnInit() {
     }
 

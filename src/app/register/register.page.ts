@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DbService } from '../services/db.service';
+import { DBService } from '../services/db.service';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { User } from '../entities/user';
@@ -11,7 +11,7 @@ import { User } from '../entities/user';
 })
 export class RegisterPage implements OnInit {
   user: User;
-  constructor(private router: Router,private dbService: DbService, private auth: AuthenticationService) {
+  constructor(private router: Router,private dbService: DBService, private auth: AuthenticationService) {
     this.user = new User();
    }
   logarUsuario(){

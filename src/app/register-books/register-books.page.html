@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title></ion-title>
+    <ion-buttons slot="start">
+        <ion-back-button color="primary"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -9,28 +12,28 @@
         <ion-row justify-content-center>
           <ion-col align-self-center size-xs="10">
             <ion-item>
-              <ion-label position="stacked">Titulo do Livro</ion-label>
-              <ion-input [(ngModel)]="book.title" required type="text"></ion-input>
+              <ion-label position="stacked" color="primary">Titulo do Livro</ion-label>
+              <ion-input [(ngModel)]="book.title" required type="text" color="primary"></ion-input>
             </ion-item>
     
             <ion-item>
-              <ion-label position="stacked">Descrição</ion-label>
-              <ion-input [(ngModel)]="book.description" required type="text"></ion-input>
+              <ion-label position="stacked"  color="primary" >Descrição</ion-label>
+              <ion-input [(ngModel)]="book.description" required type="text" color="primary"></ion-input>
             </ion-item>
     
             <ion-item>
-              <ion-label position="stacked">Autor</ion-label>
-              <ion-input [(ngModel)]="book.author" required type="text"></ion-input>
+              <ion-label position="stacked" color="primary">Autor</ion-label>
+              <ion-input [(ngModel)]="book.author" required type="text" color="primary"></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-label position="stacked">Gênero</ion-label>
-                <ion-input [(ngModel)]="book.genre" required type="text"></ion-input>
+                <ion-label position="stacked" color="primary">Gênero</ion-label>
+                <ion-input [(ngModel)]="book.genre" required type="text" color="primary"></ion-input>
             </ion-item>
 
             <ion-item>
-                <ion-label position="stacked">Ano de Lançamento</ion-label>
-                <ion-input [(ngModel)]="book.releaseYear" required type="text"></ion-input>
+                <ion-label position="stacked" color="primary">Ano de Lançamento</ion-label>
+                <ion-input [(ngModel)]="book.releaseYear" required type="text" color="primary"></ion-input>
             </ion-item>
 
             

@@ -12,7 +12,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { DbService } from './services/db.service';
+import { DBService } from './services/db.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +29,7 @@ import { DbService } from './services/db.service';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AngularFireDatabase,
     AngularFireAuth,
-    DbService
+    DBService
   ],
   bootstrap: [AppComponent]
 })

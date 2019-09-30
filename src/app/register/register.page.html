@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title></ion-title>
+    <ion-buttons slot="start">
+        <ion-back-button color="primary"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -10,18 +13,18 @@
     <ion-row justify-content-center>
       <ion-col align-self-center size-xs="10">
         <ion-item>
-          <ion-label position="stacked">Nome Usuário</ion-label>
-          <ion-input [(ngModel)]="user.name" required type="text"></ion-input>
+          <ion-label position="stacked" color="primary">Nome Usuário</ion-label>
+          <ion-input [(ngModel)]="user.name" required type="text" color="primary"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked">Email</ion-label>
-          <ion-input [(ngModel)]="user.email" required type="text"></ion-input>
+          <ion-label position="stacked" color="primary">Email</ion-label>
+          <ion-input [(ngModel)]="user.email" required type="text" color="primary"></ion-input>
         </ion-item>
 
         <ion-item>
-          <ion-label position="stacked">Senha</ion-label>
-          <ion-input [(ngModel)]="user.password" required type="password"></ion-input>
+          <ion-label position="stacked" color="primary">Senha</ion-label>
+          <ion-input [(ngModel)]="user.password" required type="password" color="primary"></ion-input>
         </ion-item>
       
         <section>
