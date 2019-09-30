@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-xs="10">
+        <img src="assets/img/icon.png" alt="some text" width=400 height=300>
+
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input [(ngModel)]="email" required type="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Senha</ion-label>
+          <ion-input [(ngModel)]="password" required type="password"></ion-input>
+        </ion-item>
+
+        <section>
+            <ion-button  [disabled]="!email || !password" class="btn btn-primary btn-block" (click)="logarUsuario()"expand="block" fill="outline" color="primary">LOGAR</ion-button>
+          </section>
+          
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</ion-content>

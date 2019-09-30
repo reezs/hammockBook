@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+      <ion-grid fixed>      
+        <ion-row justify-content-center>
+          <ion-col align-self-center size-xs="10">
+            <ion-item>
+              <ion-label position="stacked">Titulo do Livro</ion-label>
+              <ion-input [(ngModel)]="book.title" required type="text"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+              <ion-label position="stacked">Descrição</ion-label>
+              <ion-input [(ngModel)]="book.description" required type="text"></ion-input>
+            </ion-item>
+    
+            <ion-item>
+              <ion-label position="stacked">Autor</ion-label>
+              <ion-input [(ngModel)]="book.author" required type="text"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="stacked">Gênero</ion-label>
+                <ion-input [(ngModel)]="book.genre" required type="text"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="stacked">Ano de Lançamento</ion-label>
+                <ion-input [(ngModel)]="book.releaseYear" required type="text"></ion-input>
+            </ion-item>
+
+            
+            <section>
+                <ion-button (click)="salvarBook()" expand="block" fill="outline" color="primary">ADICIONAR</ion-button>
+              </section>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+</ion-content>
