@@ -13,15 +13,19 @@ import { environment } from 'src/environments/environment';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { DBService } from './services/db.service';
+import { EditBooksPage } from './edit-books/edit-books.page';
+import { FormsModule } from '@angular/forms';
+import {EditUserPage } from './edit-user/edit-user.page'
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, EditBooksPage, EditUserPage],
+  entryComponents: [EditBooksPage, EditUserPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    FormsModule
   ],
   providers: [
     StatusBar,

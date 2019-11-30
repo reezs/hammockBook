@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title color="primary">Editar Livro</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid fixed>
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-xs="10">
+
+        <ion-item>
+          <ion-input [(ngModel)]="editingUser.name" placeholder="Digite seu nome" color="primary"></ion-input>
+        </ion-item>
+        <section>
+          <ion-button (click)="save()" class="btn-save" color="primary" expand="full">SALVAR</ion-button>
+        </section>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </ion-content>
+  

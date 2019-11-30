@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DBService } from '../services/db.service';
+import { EditBooksPage } from '../edit-books/edit-books.page';
 import { Book } from '../entities/book';
+import { DBService } from '../services/db.service';
+import { ModalController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-books',
@@ -10,7 +13,7 @@ import { Book } from '../entities/book';
 })
 export class BooksPage implements OnInit {
   books: Book[];
-  constructor(private router: Router, private dbService: DBService) {
+  constructor(private router: Router, private dbService: DBService, private modalController: ModalController) {
     this.listarBooks();
   }
   registrarBooks() {
@@ -29,24 +32,15 @@ export class BooksPage implements OnInit {
     this.listarBooks();
   }
 
-  edit(book) {
-    book.isEditing = true;
-  }
-
-  cancelEdit(book) {
-    book.isEditing = false;
-  }
-
-  confirmEdit(book) {
-    this.dbService.update('books', book.uid, {
-      title: book.title,
-      description: book.description,
-      author: book.author,
-      genre: book.genre,
-      releaseYear: book.releaseYear
+  async editBook(book: Book) {
+    const modal = await this.modalController.create({
+      component: EditBooksPage,
+      componentProps: {
+        editingBook: book
+      }
     });
-    book.isEditing = false;
-    }
+    return await modal.present();
+  }
     ngOnInit() {
     }
 
