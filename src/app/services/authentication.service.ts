@@ -33,4 +33,12 @@ export class AuthenticationService {
     return this.afAuth.auth;
   }
 
+  logout(){
+    return this.afAuth.auth.signOut();
+  }
+
+  delete() {
+    return this.afAuth.auth.currentUser.delete();
+}
+
 }

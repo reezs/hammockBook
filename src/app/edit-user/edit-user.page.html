@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title color="primary">Editar Livro</ion-title>
+    <ion-title color="primary"> </ion-title>
     <ion-buttons slot="primary">
       <ion-button (click)="dismiss()">
         <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -13,8 +13,13 @@
     <ion-row justify-content-center>
       <ion-col align-self-center size-xs="10">
 
+        <div (click)="changePhoto()">
+          <img *ngIf="!editingUser.photo" src="assets/avatar.png">
+          <ion-img *ngIf="editingUser.photo" [src]="editingUser.photo"></ion-img>
+        </div>
+
         <ion-item>
-          <ion-input [(ngModel)]="editingUser.name" placeholder="Digite seu nome" color="primary"></ion-input>
+          <ion-input [(ngModel)]="editingUser.name" placeholder="Digite o nome" color="primary"></ion-input>
         </ion-item>
         <section>
           <ion-button (click)="save()" class="btn-save" color="primary" expand="full">SALVAR</ion-button>

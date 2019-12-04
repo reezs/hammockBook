@@ -3,7 +3,7 @@
     <ion-title></ion-title>
     <ion-buttons slot="start">
       <ion-back-button color="primary"></ion-back-button>
-  </ion-buttons>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -24,11 +24,12 @@
         </ion-item>
 
         <section>
-            <ion-button  [disabled]="!email || !password" class="btn btn-primary btn-block" (click)="logarUsuario()"expand="block" fill="outline" color="primary">LOGAR</ion-button>
-          </section>
-          
+          <ion-button [disabled]="!email || !password" class="btn btn-primary btn-block" (click)="logarUsuario()"
+            expand="block" fill="outline" color="primary">LOGAR</ion-button>
+        </section>
+
       </ion-col>
     </ion-row>
   </ion-grid>
-  
+
 </ion-content>

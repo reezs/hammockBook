@@ -13,6 +13,11 @@
     <ion-row justify-content-center>
       <ion-col align-self-center size-xs="10">
 
+        <div (click)="changePhoto()">
+          <img *ngIf="!editingBook.photo" src="assets/default.jpg">
+          <ion-img *ngIf="editingBook.photo" [src]="editingBook.photo"></ion-img>
+        </div>
+
         <ion-item>
           <ion-input [(ngModel)]="editingBook.title" placeholder="Digite o título" color="primary"></ion-input>
         </ion-item>

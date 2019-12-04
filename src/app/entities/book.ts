@@ -5,5 +5,6 @@ export class Book {
     author: string;
     genre: string;
     releaseYear: number;
+    photo: string;
 
 }

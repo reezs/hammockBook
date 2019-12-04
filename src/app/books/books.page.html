@@ -3,6 +3,8 @@
     <ion-card *ngFor="let book of books" color="primary">
       <img src="" />
       <ion-card-header>
+          <ion-img *ngIf="book.photo" [src]="book.photo"></ion-img>
+          <img *ngIf="!book.photo" src="assets/default.jpg">
         <ion-card-subtitle>{{book.author}}</ion-card-subtitle>
         <ion-card-subtitle>{{book.releaseYear}}</ion-card-subtitle>
         <ion-card-title>{{book.title}}</ion-card-title>
