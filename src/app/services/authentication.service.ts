@@ -33,12 +33,15 @@ export class AuthenticationService {
     return this.afAuth.auth;
   }
 
-  logout(){
+  logout() {
     return this.afAuth.auth.signOut();
   }
 
   delete() {
     return this.afAuth.auth.currentUser.delete();
-}
+  }
+  sendResetPassword(email: string) {
+    return this.afAuth.auth.sendPasswordResetEmail(email)
+  }
 
 }

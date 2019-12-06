@@ -3,8 +3,8 @@
     <ion-card *ngFor="let book of books" color="primary">
       <img src="" />
       <ion-card-header>
-          <ion-img *ngIf="book.photo" [src]="book.photo"></ion-img>
-          <img *ngIf="!book.photo" src="assets/default.jpg">
+        <ion-img *ngIf="book.photo" [src]="book.photo"></ion-img>
+        <img *ngIf="!book.photo" src="assets/default.jpg">
         <ion-card-subtitle>{{book.author}}</ion-card-subtitle>
         <ion-card-subtitle>{{book.releaseYear}}</ion-card-subtitle>
         <ion-card-title>{{book.title}}</ion-card-title>
@@ -22,10 +22,12 @@
         </ion-label>
       </ion-icon>
       <ion-icon (click)="deletarBook(book.uid)" name="trash" color="secondary"></ion-icon>
+      <ion-icon (click)="clickStar(book.uid)" color="secondary" name="star-outline"></ion-icon>
     </ion-card>
+    
   </ion-list>
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button (click)="registrarBooks()" color="primary">
+    <ion-fab-button (click)="registrarBooks()" color="light">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

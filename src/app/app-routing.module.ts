@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
   { path: 'logged', loadChildren: './logged/logged.module#LoggedPageModule' },
   { path: 'users', loadChildren: './users/users.module#UsersPageModule' },
-  { path: 'register-books', loadChildren: './register-books/register-books.module#RegisterBooksPageModule' }
+  { path: 'register-books', loadChildren: './register-books/register-books.module#RegisterBooksPageModule' },
+  { path: 'reset-password', loadChildren: './reset-password/reset-password.module#ResetPasswordPageModule' }
 
 ];
 

@@ -4,6 +4,8 @@ import { EditBooksPage } from '../edit-books/edit-books.page';
 import { Book } from '../entities/book';
 import { DBService } from '../services/db.service';
 import { ModalController } from '@ionic/angular';
+import { User } from '../entities/user';
+import { AuthenticationService } from '../services/authentication.service';
 
 
 @Component({
@@ -13,15 +15,19 @@ import { ModalController } from '@ionic/angular';
 })
 export class BooksPage implements OnInit {
   books: Book[];
-  constructor(private router: Router, private dbService: DBService, private modalController: ModalController) {
+  userOk: User;
+  constructor(private router: Router, private dbService: DBService, private modalController: ModalController, private authentication: AuthenticationService) {
+    this.getUser();
     this.listarBooks();
+    
   }
   registrarBooks() {
     this.router.navigate(['register-books'])
   }
   async listarBooks() {
     this.books = await this.dbService.listWithUIDs<Book>('books');
-
+      
+    
   }
 
   async deletarBook(key: string) {
@@ -41,7 +47,22 @@ export class BooksPage implements OnInit {
     });
     return await modal.present();
   }
-    ngOnInit() {
+  ngOnInit() {
+  }
+
+  async getUser() {
+    this.userOk = await this.authentication.loggedInUser();
+    if (!this.userOk.books) {
+      this.userOk.books = [];
     }
+        
+  }
+  async clickStar(key: string) {
+    this.userOk.books.push(key);
+    
+    await this.dbService.update('usuarios', this.userOk.uid, { books: this.userOk.books });
+    
+    
 
   }
+}

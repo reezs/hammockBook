@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
   private password: string;
   loading;
 
-  constructor(private router:Router, private auth: AuthenticationService, private loadingController: LoadingController) { }
+  constructor(private router: Router, private auth: AuthenticationService, private loadingController: LoadingController) { }
 
   async hideLoading() {
     this.loading.dismiss();
@@ -42,6 +42,9 @@ export class LoginPage implements OnInit {
     await this.hideLoading();
     delete this.email;
     delete this.password;
+  }
+  redefinirSenha(){
+    this.router.navigate(["/reset-password"]);
   }
   ngOnInit() {
   }
