@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../entities/user';
-import { LoadingController, ToastController, ModalController, ActionSheetController } from '@ionic/angular';
+import { LoadingController, ToastController, ModalController, ActionSheetController, AlertController } from '@ionic/angular';
 import { DBService } from '../services/db.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { CameraService } from '../services/camera.service';
@@ -18,7 +18,7 @@ export class EditUserPage implements OnInit {
   editingUser: User;
   loading;
 
-  constructor(private modalController: ModalController, private dbService: DBService, private loadingController: LoadingController,  private toastController: ToastController, private authentication: AuthenticationService, private cameraService: CameraService, private actionSheetController: ActionSheetController) { 
+  constructor(private modalController: ModalController, private dbService: DBService, private loadingController: LoadingController,  private toastController: ToastController, private authentication: AuthenticationService, private cameraService: CameraService, private actionSheetController: ActionSheetController, private alertController: AlertController) { 
     this.initialize();
   }
 
@@ -102,5 +102,30 @@ async initialize() {
       duration: 2000
     });
     toast.present();
+  }
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: '',
+      message: 'Deseja mesmo salvar essas alterações?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            
+          }
+        }, {
+          text: 'Confirmar',
+          handler: () => {
+            this.save();
+          }
+        }
+      ]
+    });
+
+
+
+    await alert.present();
   }
 }

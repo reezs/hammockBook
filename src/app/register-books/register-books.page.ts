@@ -20,15 +20,15 @@ export class RegisterBooksPage implements OnInit {
   generateNotification() {
     this.localNotifications.schedule({
       id: 1,
-      title: 'Notificação',
+      title: 'Registro',
       text: `Um novo livro foi adicionado`,
       sound: 'file://sound.mp3'
     });
   }
   
-  salvarBook(){
-    this.dbService.insertInList('books',this.book);
-    this.generateNotification();
+  async salvarBook(){
+    await this.dbService.insertInList('books',this.book);
+    await this.generateNotification();
     alert('Livro adicionado com sucesso!');
     this.router.navigate(['/tabs/books']);
   }

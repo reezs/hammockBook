@@ -5,33 +5,35 @@
     <ion-label color="primary">Sair</ion-label>
   </ion-chip>
 
-  <ion-avatar class="avatarProfile">
-    <img class="imgProfile" src="assets/avatar.png">
-    <ion-chip color="dark" class="ajustarCamera">
-      <ion-icon (click)="editUser(userOk)" name="camera"></ion-icon>
+  
+    <ion-img class="imgProfile" *ngIf="userOk.photo" [src]="userOk.photo"></ion-img>
+    <img class="imgProfile" *ngIf="!userOk.photo" src="assets/avatar.png">
+
+    <ion-chip color="light" class="ajustarCamera">
+      <ion-icon color="dark" (click)="editUser(userOk)" name="camera"></ion-icon>
     </ion-chip>
-  </ion-avatar>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-item *ngIf="userOk">
-          <ion-label class="ajustarDescricao" color="primary">Nome:</ion-label>
-          <ion-label color="primary">{{userOk.name}}</ion-label>
-          <ion-icon color="dark" (click)="editUser(userOk)" name="create"></ion-icon>
-        </ion-item>
-        <ion-item *ngIf="userOk">
-          <ion-label class="ajustarDescricao" color="primary">Email:</ion-label>
-          <ion-label color="primary">{{userOk.email}}</ion-label>
-        </ion-item>
-        <ion-item class="ajustarRedefinirSenha" (click)="redefinirSenha()">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item *ngIf="userOk">
+            <ion-label class="ajustarDescricao" color="primary">Nome:</ion-label>
+            <ion-label color="primary">{{userOk.name}}</ion-label>
+            <ion-icon color="dark" (click)="editUser(userOk)" name="create"></ion-icon>
+          </ion-item>
+          <ion-item *ngIf="userOk">
+            <ion-label class="ajustarDescricao" color="primary">Email:</ion-label>
+            <ion-label color="primary">{{userOk.email}}</ion-label>
+          </ion-item>
+          <ion-item class="ajustarRedefinirSenha" (click)="redefinirSenha()">
             <ion-label color="primary">Redefinir Senha</ion-label>
             <ion-icon color="dark" name="key"></ion-icon>
-       </ion-item>
-        <ion-item class="ajustarDesativar" (click)="desativar()">
-          <ion-label color="primary">Desativar conta</ion-label>
-        </ion-item>
-        
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+          </ion-item>
+          <ion-item class="ajustarDesativar" (click)="presentAlertConfirm()">
+            <ion-label color="primary">Desativar conta</ion-label>
+          </ion-item>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 </ion-content>

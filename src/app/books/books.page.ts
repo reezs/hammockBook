@@ -19,15 +19,15 @@ export class BooksPage implements OnInit {
   constructor(private router: Router, private dbService: DBService, private modalController: ModalController, private authentication: AuthenticationService) {
     this.getUser();
     this.listarBooks();
-    
+
   }
   registrarBooks() {
     this.router.navigate(['register-books'])
+   
   }
+
   async listarBooks() {
     this.books = await this.dbService.listWithUIDs<Book>('books');
-      
-    
   }
 
   async deletarBook(key: string) {
@@ -45,8 +45,13 @@ export class BooksPage implements OnInit {
         editingBook: book
       }
     });
+    modal.onDidDismiss()
+      .then((data) => {
+        this.listarBooks();
+      });
     return await modal.present();
   }
+
   ngOnInit() {
   }
 
@@ -55,14 +60,17 @@ export class BooksPage implements OnInit {
     if (!this.userOk.books) {
       this.userOk.books = [];
     }
-        
+
   }
   async clickStar(key: string) {
+    let consulta: any;
+    consulta = this.userOk.books.find(book => book === key);
+    console.log(consulta);
+    
+    if(!consulta){
     this.userOk.books.push(key);
-    
+    console.log(key)
     await this.dbService.update('usuarios', this.userOk.uid, { books: this.userOk.books });
-    
-    
-
+  }
   }
 }

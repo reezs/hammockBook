@@ -22,7 +22,10 @@
           <ion-input [(ngModel)]="editingUser.name" placeholder="Digite o nome" color="primary"></ion-input>
         </ion-item>
         <section>
-          <ion-button (click)="save()" class="btn-save" color="primary" expand="full">SALVAR</ion-button>
+          <ion-button (click)="presentAlertConfirm()" class="btn-save" color="primary" expand="full">SALVAR</ion-button>
+        </section>
+        <section>
+          <ion-button (click)="dismiss()" class="btn-save"  color="primary" expand="full" >CANCELAR</ion-button>
         </section>
       </ion-col>
     </ion-row>

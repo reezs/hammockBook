@@ -1,5 +1,5 @@
 export class Book {
-    bid: string;
+    uid: string;
     title: string;
     description: string;
     author: string;

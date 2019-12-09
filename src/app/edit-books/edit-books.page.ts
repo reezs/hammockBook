@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../entities/book';
-import { ModalController, LoadingController, ToastController, ActionSheetController } from '@ionic/angular';
+import { ModalController, LoadingController, ToastController, ActionSheetController, AlertController } from '@ionic/angular';
 import { DBService } from '../services/db.service';
 import { CameraService } from '../services/camera.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
@@ -17,7 +17,7 @@ export class EditBooksPage implements OnInit {
   books: Book[];
   loading;
 
-  constructor(private modalController: ModalController, private dbService: DBService, private loadingController: LoadingController,  private toastController: ToastController, private cameraService: CameraService,  private actionSheetController: ActionSheetController) { 
+  constructor(private modalController: ModalController, private dbService: DBService, private loadingController: LoadingController, private toastController: ToastController, private cameraService: CameraService, private actionSheetController: ActionSheetController, private alertController: AlertController) {
     this.initialize();
   }
 
@@ -27,13 +27,13 @@ export class EditBooksPage implements OnInit {
     this.books = await this.dbService.listWithUIDs<Book>('livros');
 
     await this.hideLoading();
-   }
+  }
 
   async hideLoading() {
     this.loading.dismiss();
-   }
+  }
 
-   async presentLoading() {
+  async presentLoading() {
     this.loading = await this.loadingController.create({
       message: 'Carregando'
     });
@@ -48,14 +48,46 @@ export class EditBooksPage implements OnInit {
     this.modalController.dismiss();
   }
 
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: '',
+      message: 'Deseja mesmo salvar essas alterações?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            
+          }
+        }, {
+          text: 'Confirmar',
+          handler: () => {
+            this.save();
+          }
+        }
+      ]
+    });
+
+
+
+    await alert.present();
+  }
   async save() {
     await this.presentLoading();
 
-    await this.dbService.update('books', this.editingBook.bid, { title: this.editingBook.title, description: this.editingBook.description, author: this.editingBook.author, genre: this.editingBook.genre, releaseYear: this.editingBook.releaseYear, photo: this.editingBook.photo || null});
+    await this.dbService.update('books', this.editingBook.uid, {
+      title: this.editingBook.title,
+      description: this.editingBook.description,
+      author: this.editingBook.author,
+      genre: this.editingBook.genre,
+      releaseYear: this.editingBook.releaseYear,
+      photo: this.editingBook.photo || null
+    });
 
     await this.hideLoading();
 
-    this.presentToast('Dados atualizados');
+    this.presentToast(this.editingBook.title + " foi atualizado!");
 
     this.dismiss();
   }
@@ -78,7 +110,7 @@ export class EditBooksPage implements OnInit {
           handler: () => {
             this.cameraService.takePicture().then((foto) => {
               this.editingBook.photo = foto;
-            }    
+            }
             );
           }
         },
@@ -91,7 +123,7 @@ export class EditBooksPage implements OnInit {
             }
             );
           }
-        }, 
+        },
         {
           text: 'Cancelar',
           icon: 'close',
@@ -105,6 +137,6 @@ export class EditBooksPage implements OnInit {
     await actionSheet.present();
   }
 
-  
+
 
 }

@@ -1,11 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="positionTittle" color="primary">Editar Livro</ion-title>
-    <ion-buttons slot="primary">
-      <ion-button (click)="dismiss()">
-        <ion-icon slot="icon-only" name="close"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    <ion-title class="positionTittle" color="primary">Editar Livro</ion-title> 
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -40,7 +35,10 @@
         </ion-item>
 
         <section>
-          <ion-button (click)="save()" class="btn-save" color="primary" expand="full">SALVAR</ion-button>
+          <ion-button (click)="presentAlertConfirm()" class="btn-save" color="primary" expand="full">SALVAR</ion-button>
+        </section>
+        <section>
+          <ion-button (click)="dismiss()" class="btn-save"  color="primary" expand="full" >CANCELAR</ion-button>
         </section>
       </ion-col>
     </ion-row>

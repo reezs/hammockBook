@@ -1,3 +1,15 @@
 ion-list {
-    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
+ion-card{
+    .icones{
+        width: 100%;
+        margin: 2vw;
+        margin-left: 70vw;
+
+        ion-icon{
+            font-size: 7vw;
+        }   
+    }
 }

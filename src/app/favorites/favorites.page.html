@@ -1,13 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title class="positionTittle">Favorites</ion-title>
+    <ion-title class="positionTittle" color="primary">Seus favoritos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
     <ion-card *ngFor="let book of books" color="primary">
-      <img src="" />
       <ion-card-header>
         <ion-img *ngIf="book.photo" [src]="book.photo"></ion-img>
         <img *ngIf="!book.photo" src="assets/default.jpg">
@@ -16,8 +15,6 @@
         <ion-card-title>{{book.title}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>{{book.description}}</ion-card-content>
-
     </ion-card>
-    
-  </ion-list>
+   </ion-list>
 </ion-content>

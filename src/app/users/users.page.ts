@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../services/authentication.service';
 import { DBService } from '../services/db.service';
 import { User } from '../entities/user';
-import { LoadingController, ActionSheetController, ToastController, ModalController } from '@ionic/angular';
+import { LoadingController, ActionSheetController, ToastController, ModalController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { CameraService } from '../services/camera.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
@@ -18,8 +18,10 @@ export class UsersPage implements OnInit {
   userOk: User;
   loading;
   
-  constructor(private router: Router,private authentication: AuthenticationService, private dbService: DBService, private loadingController: LoadingController, private actionSheetController: ActionSheetController, private cameraService: CameraService, private toastController: ToastController, private modalController: ModalController ) { 
+  constructor(private router: Router,private authentication: AuthenticationService, private dbService: DBService, private loadingController: LoadingController, private actionSheetController: ActionSheetController, private cameraService: CameraService, private toastController: ToastController, private modalController: ModalController, private alertController: AlertController) { 
+    this.userOk = new User();
     this.getUser();
+    
   }
 
   async editUser(user: User) {
@@ -52,15 +54,6 @@ export class UsersPage implements OnInit {
     });
     toast.present();
 
-  }
-  async save() {
-    await this.presentLoading();
-
-    await this.dbService.update('usuarios', this.userOk.uid, { name: this.userOk.name, photo: this.userOk.photo});
-
-    await this.hideLoading();
-
-    this.presentToast('Dados atualizados');
   }
   async changePhoto() {
     const actionSheet = await this.actionSheetController.create({
@@ -109,6 +102,7 @@ export class UsersPage implements OnInit {
     await this.presentLoading();
     this.userOk = await this.authentication.loggedInUser()
     await this.hideLoading();
+    console.log(this.userOk);
   }
 
   async deleteUser(key: string){
@@ -123,6 +117,33 @@ export class UsersPage implements OnInit {
     await this.hideLoading();
   }
 
+  redefinirSenha(){
+    this.router.navigate(['/reset-password'])
+  }
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: '',
+      message: 'Deseja mesmo desativar sua conta permanentemente?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'primary',
+          handler: (blah) => {
+            
+          }
+        }, {
+          text: 'Confirmar',
+          handler: () => {
+            this.desativar();
+          }
+        }
+      ]
+    });
 
+
+
+    await alert.present();
+  }
 
 }

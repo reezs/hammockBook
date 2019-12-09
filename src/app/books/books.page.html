@@ -10,24 +10,16 @@
         <ion-card-title>{{book.title}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>{{book.description}}</ion-card-content>
-      <ion-icon (click)="editBook(book)" name="create" color="secondary">
-        <ion-label>
-          {{book.title}}
-          {{book.description}}
-          {{book.author}}
-          {{book.genre}}
-          {{book.releaseYear}}
-          <ion-icon *ngIf="!book.confirmed" class="status-icon status-warning" name="alert"></ion-icon>
-          <ion-icon *ngIf="book.confirmed" class="status-icon status-confirmed" name="checkmark-circle"></ion-icon>
-        </ion-label>
-      </ion-icon>
-      <ion-icon (click)="deletarBook(book.uid)" name="trash" color="secondary"></ion-icon>
-      <ion-icon (click)="clickStar(book.uid)" color="secondary" name="star-outline"></ion-icon>
+      <div class="icones">
+        <ion-icon (click)="editBook(book)" name="create" color="secondary"></ion-icon>
+        <ion-icon (click)="deletarBook(book.uid)" name="trash" color="secondary"></ion-icon>
+        <ion-icon (click)="clickStar(book.uid)" color="secondary" name="star"></ion-icon>
+      </div>
     </ion-card>
-    
+
   </ion-list>
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button (click)="registrarBooks()" color="light">
+    <ion-fab-button (click)="registrarBooks()" color="primary">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
