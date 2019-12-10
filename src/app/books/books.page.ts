@@ -71,6 +71,7 @@ export class BooksPage implements OnInit {
     this.userOk.books.push(key);
     console.log(key)
     await this.dbService.update('usuarios', this.userOk.uid, { books: this.userOk.books });
+    alert('O livro foi adicionado a sua lista de favoritos!');
   }
   }
 }

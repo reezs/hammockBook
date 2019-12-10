@@ -39,9 +39,10 @@ export class LoginPage implements OnInit {
       console.log(error);
       alert('O e-mail ou senha inseridos estão incorretos ou não existem.');
     });
-    await this.hideLoading();
+    
     delete this.email;
     delete this.password;
+    await this.hideLoading();
   }
   redefinirSenha(){
     this.router.navigate(["/reset-password"]);
